@@ -9,9 +9,12 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Banila Co — Find Your Ideal Cleanse",
+  title: "Banila Co test",
   description:
     "Discover the cleansing formula crafted for your skin. Take our short quiz and find your best match.",
+  icons: {
+    icon: "/lotion.png",
+  },
 };
 
 export default function RootLayout({

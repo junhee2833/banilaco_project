@@ -5,7 +5,7 @@ import { Language } from "@/types";
 
 const LANGUAGES: { code: Language; label: string }[] = [
   { code: "en", label: "EN" },
-  { code: "ko", label: "한국어" },
+  { code: "ko", label: "KO" },
   { code: "de", label: "DE" },
   { code: "fr", label: "FR" },
 ];

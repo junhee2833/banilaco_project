@@ -15,7 +15,7 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
       {/* Hero image — full width */}
       <div className="relative w-full overflow-hidden" style={{ height: "55vw", maxHeight: 280 }}>
         <Image
-          src="/logo.jpeg"
+          src="/images/1st.png"
           alt="Banila Co"
           fill
           className="object-cover object-center"

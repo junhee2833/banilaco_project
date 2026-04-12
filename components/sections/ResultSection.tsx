@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/lib/languageContext";
 import { getIngredientNotice } from "@/lib/ingredientNotice";
 import { PRODUCTS } from "@/constants/products";
@@ -24,7 +25,7 @@ export default function ResultSection({
   return (
     <div className="flex-1 flex flex-col">
       {/* Scrollable content */}
-      <div className="flex-1 overflow-y-auto pb-28">
+      <div className="flex-1 min-h-0 overflow-y-auto pb-6">
         {/* Header */}
         <div className="px-5 pt-8 pb-6">
           <p className="text-xs tracking-[0.25em] uppercase text-stone-400 font-medium mb-2">
@@ -80,11 +81,11 @@ export default function ResultSection({
         </div>
       </div>
 
-      {/* Floating retake button — sticks to bottom of mobile shell */}
-      <div className="sticky bottom-0 px-5 py-4 bg-linear-to-t from-white via-white/95 to-transparent pointer-events-none">
+      {/* Floating retake button — always visible at bottom */}
+      <div className="px-5 py-4 border-t border-stone-100 bg-white">
         <button
           onClick={onRetake}
-          className="pointer-events-auto w-full py-3.5 rounded-xl border border-stone-200 bg-white text-sm text-stone-500 hover:bg-stone-50 active:scale-[0.98] transition-all duration-200 shadow-sm"
+          className="w-full py-3.5 rounded-xl border border-stone-200 bg-white text-sm text-stone-500 hover:bg-stone-50 active:scale-[0.98] transition-all duration-200 shadow-sm"
         >
           {t.result_retake}
         </button>
@@ -124,22 +125,15 @@ function ProductCard({
     >
       {/* Product image area */}
       <div
-        className={`relative w-full flex items-center justify-center ${
-          isPrimary ? "bg-gradient-to-br from-rose-50 to-amber-50" : "bg-stone-100"
-        }`}
+        className="relative w-full overflow-hidden"
         style={{ height: isPrimary ? 200 : 140 }}
       >
-        <div className="flex flex-col items-center gap-2 opacity-40">
-          <div
-            className={`rounded-full bg-white shadow-sm flex items-center justify-center ${
-              isPrimary ? "w-20 h-20" : "w-14 h-14"
-            }`}
-          >
-            <span className={isPrimary ? "text-3xl" : "text-xl"}>✦</span>
-          </div>
-          <span className="text-xs text-stone-400 tracking-wide">{product.category}</span>
-        </div>
-
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-cover object-center"
+        />
         {isPrimary && (
           <div className="absolute top-3 left-3 bg-stone-800 text-white text-xs px-2.5 py-1 rounded-full tracking-wide">
             #1 Pick
