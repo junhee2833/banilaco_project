@@ -57,7 +57,7 @@ export default function Home() {
   };
 
   return (
-    <MobileShell>
+    <MobileShell onHome={handleRetake}>
       <div
         className="flex-1 flex flex-col transition-opacity duration-300"
         key={section}

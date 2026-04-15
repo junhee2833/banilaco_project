@@ -24,8 +24,8 @@ export default function ResultSection({
 
   return (
     <div className="flex-1 flex flex-col">
-      {/* Scrollable content */}
-      <div className="flex-1 min-h-0 overflow-y-auto pb-6">
+      {/* Scrollable content — pb-24 to avoid content hiding behind fixed button */}
+      <div className="flex-1 pb-24">
         {/* Header */}
         <div className="px-5 pt-8 pb-6">
           <p className="text-xs tracking-[0.25em] uppercase text-stone-400 font-medium mb-2">
@@ -81,11 +81,11 @@ export default function ResultSection({
         </div>
       </div>
 
-      {/* Floating retake button — always visible at bottom */}
-      <div className="px-5 py-4 border-t border-stone-100 bg-white">
+      {/* Fixed floating retake button — centered, matches mobile container width */}
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-107.5 px-5 py-4 bg-white/95 backdrop-blur-sm border-t border-stone-100 z-40">
         <button
           onClick={onRetake}
-          className="w-full py-3.5 rounded-xl border border-stone-200 bg-white text-sm text-stone-500 hover:bg-stone-50 active:scale-[0.98] transition-all duration-200 shadow-sm"
+          className="w-full py-3.5 rounded-xl bg-stone-800 text-white text-sm font-medium hover:bg-stone-700 active:scale-[0.98] transition-all duration-200 shadow-sm"
         >
           {t.result_retake}
         </button>
@@ -113,7 +113,6 @@ function ProductCard({
 }: ProductCardProps) {
   const { t } = useLanguage();
 
-  // Look up translated reason via message key: reason_<productId>
   const reasonKey = `reason_${productId}` as keyof typeof t;
   const translatedReason = (t[reasonKey] as string) ?? product.reason;
 
@@ -123,7 +122,7 @@ function ProductCard({
         isPrimary ? "border-stone-200 shadow-md" : "border-stone-100 bg-stone-50"
       }`}
     >
-      {/* Product image area */}
+      {/* Product image */}
       <div
         className="relative w-full overflow-hidden"
         style={{ height: isPrimary ? 200 : 140 }}
@@ -166,11 +165,7 @@ function ProductCard({
           href={product.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`block w-full text-center py-3 rounded-xl text-sm font-medium tracking-wide transition-all duration-200 active:scale-[0.98] ${
-            isPrimary
-              ? "bg-stone-800 text-white hover:bg-stone-700 shadow-sm"
-              : "bg-white border border-stone-200 text-stone-700 hover:bg-stone-50"
-          }`}
+          className="block w-full text-center py-3 rounded-xl text-sm font-medium tracking-wide transition-all duration-200 active:scale-[0.98] bg-stone-800 text-white hover:bg-stone-700 shadow-sm"
         >
           {shopLabel}
         </a>

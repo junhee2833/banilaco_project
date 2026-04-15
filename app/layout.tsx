@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Discover the cleansing formula crafted for your skin. Take our short quiz and find your best match.",
   icons: {
-    icon: "/lotion.png",
+    icon: "/lotion.ico",
   },
 };
 
